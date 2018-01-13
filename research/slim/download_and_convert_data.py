@@ -39,6 +39,7 @@ import tensorflow as tf
 from datasets import download_and_convert_cifar10
 from datasets import download_and_convert_flowers
 from datasets import download_and_convert_mnist
+from datasets import convert_text_pic
 
 FLAGS = tf.app.flags.FLAGS
 
@@ -51,6 +52,16 @@ tf.app.flags.DEFINE_string(
     'dataset_dir',
     None,
     'The directory where the output TFRecords and temporary files are saved.')
+
+tf.app.flags.DEFINE_string(
+    'src_pic_dir',
+    None,
+    'Source picture directory for input data')
+
+tf.app.flags.DEFINE_string(
+    'pkl_file',
+    None,
+    'Input pickle file for input data')
 
 
 def main(_):
@@ -65,6 +76,8 @@ def main(_):
     download_and_convert_flowers.run(FLAGS.dataset_dir)
   elif FLAGS.dataset_name == 'mnist':
     download_and_convert_mnist.run(FLAGS.dataset_dir)
+  elif FLAGS.dataset_name == 'text_pic':
+    convert_text_pic.run(FLAGS.pkl_file, FLAGS.src_pic_dir, FLAGS.dataset_dir)
   else:
     raise ValueError(
         'dataset_name [%s] was not recognized.' % FLAGS.dataset_name)
