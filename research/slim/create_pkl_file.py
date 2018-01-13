@@ -19,7 +19,7 @@ def create_pickle(in_file, out_file):
         if len(line_cut) != 2:
             print "illegal line content : ", line_cut
             continue
-        mg_name = line_cut[0]
+        img_name = line_cut[0]
         label = line_cut[1]
 
         if label not in label_dict.keys():
