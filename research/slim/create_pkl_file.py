@@ -12,12 +12,12 @@ def create_pickle(in_file, out_file):
     with open(in_file, 'r') as fr:
         line_list = fr.readlines()
 
-    print "total input number ", len(line_list)
+    #print "total input number ", len(line_list)
 
     for line in line_list:
         line_cut = line.strip().split(" ")
         if len(line_cut) != 2:
-            print "illegal line content : ", line_cut
+            #print "illegal line content : ", line_cut
             continue
         img_name = line_cut[0]
         label = line_cut[1]
@@ -41,9 +41,9 @@ def create_pickle(in_file, out_file):
 
 if __name__ == '__main__':
     if len(sys.argv) != 3:
-        print "Usage : python xx.py [in_file] [out_file]"
+        print ("Usage : python xx.py [in_file] [out_file]")
         sys.exit(1)
     else:
-        print "create pickle begin : "
+        print ("create pickle begin : ")
         create_pickle(sys.argv[1], sys.argv[2])
-        print "done !"
+        print ("done !")
